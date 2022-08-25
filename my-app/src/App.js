@@ -18,6 +18,13 @@ function App() {
         >
           Learn React
         </a>
+        <div>
+          <form>
+            <input type="text" placeholder="username" />
+            <input type="password" placeholder="password" />
+            <button data-testid="submit-button">Login</button>
+          </form>
+        </div>
       </header>
     </div>
   );
