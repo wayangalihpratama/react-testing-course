@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import App from "./App";
 
 test("renders learn react link", () => {
@@ -43,8 +43,45 @@ test("password value should be empty", () => {
   expect(passwordEl.value).toBe("");
 });
 
-test("button have Login text", () => {
+test("button submit should have Login text", () => {
   render(<App />);
   const buttonEl = screen.getByTestId("submit-button");
   expect(buttonEl.textContent).toBe("Login");
+});
+
+test("button submit should be disabled if username/password is empty", () => {
+  render(<App />);
+  const buttonEl = screen.getByTestId("submit-button");
+  expect(buttonEl).toBeDisabled();
+});
+
+test("username input value should change", () => {
+  render(<App />);
+  const usernameEl = screen.getByPlaceholderText(/username/i);
+  const userValue = "john";
+  fireEvent.change(usernameEl, { target: { value: userValue } });
+  expect(usernameEl.value).toBe(userValue);
+});
+
+test("password input value should change", () => {
+  render(<App />);
+  const passwordEl = screen.getByPlaceholderText(/password/i);
+  const passValue = "john123";
+  fireEvent.change(passwordEl, { target: { value: passValue } });
+  expect(passwordEl.value).toBe(passValue);
+});
+
+test("button submit should not be disabled", () => {
+  render(<App />);
+  const buttonEl = screen.getByTestId("submit-button");
+
+  const usernameEl = screen.getByPlaceholderText(/username/i);
+  const userValue = "john";
+  fireEvent.change(usernameEl, { target: { value: userValue } });
+
+  const passwordEl = screen.getByPlaceholderText(/password/i);
+  const passValue = "john123";
+  fireEvent.change(passwordEl, { target: { value: passValue } });
+
+  expect(buttonEl).not.toBeDisabled();
 });

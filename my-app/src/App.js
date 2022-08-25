@@ -1,7 +1,12 @@
+import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
+  const [loading, setLoading] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <div className="App">
       <header className="App-header">
@@ -20,9 +25,24 @@ function App() {
         </a>
         <div>
           <form>
-            <input type="text" placeholder="username" />
-            <input type="password" placeholder="password" />
-            <button data-testid="submit-button">Login</button>
+            <input
+              type="text"
+              placeholder="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button
+              data-testid="submit-button"
+              disabled={username === "" || password === ""}
+            >
+              Login
+            </button>
           </form>
         </div>
       </header>
