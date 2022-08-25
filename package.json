@@ -1,0 +1,23 @@
+{
+  "name": "react-testing-course",
+  "version": "1.0.0",
+  "description": "For learning purpose",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wayangalihpratama/react-testing-course.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wayangalihpratama/react-testing-course/issues"
+  },
+  "homepage": "https://github.com/wayangalihpratama/react-testing-course#readme",
+  "dependencies": {
+    "create-react-app": "^5.0.1"
+  }
+}
